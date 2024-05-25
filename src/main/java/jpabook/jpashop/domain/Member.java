@@ -2,6 +2,9 @@ package jpabook.jpashop.domain;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 public class Member {
 
@@ -14,6 +17,10 @@ public class Member {
     private String city;
     private String street;
     private String zipcode;
+
+    @OneToMany(mappedBy = "member")
+    private List<Order> orders = new ArrayList<>();
+    // 관례상 객체를 생성해준다. 객체가 없을 때 값을 넣는 NPE 를 방지할 수 있따.
 
     public Long getId() {
         return id;
