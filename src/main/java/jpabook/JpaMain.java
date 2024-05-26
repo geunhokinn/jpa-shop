@@ -1,6 +1,7 @@
 package jpabook;
 
 import jakarta.persistence.*;
+import jpabook.jpashop.domain.Book;
 import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.domain.OrderItem;
 
@@ -16,17 +17,11 @@ public class JpaMain {
 
         try {
 
-//            Order order = new Order();
-//            order.addOrderItem(new OrderItem());
+            Book book = new Book();
+            book.setName("JPA");
+            book.setAuthor("김영한");
 
-            Order order = new Order();
-            em.persist(order);
-
-            OrderItem orderItem = new OrderItem();
-            orderItem.setOrder(order);
-
-            em.persist(order);
-            // 이렇게 단방향으로만 해도 됨
+            em.persist(book);
 
             tx.commit();
         } catch (Exception e) {

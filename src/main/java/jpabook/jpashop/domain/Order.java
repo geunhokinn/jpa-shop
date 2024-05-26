@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "ORDERS") // DB 에 ORDER 가 예약어(order by) 이므로
-public class Order {
+public class Order extends BaseEntity {
 
     @Id
     @GeneratedValue
