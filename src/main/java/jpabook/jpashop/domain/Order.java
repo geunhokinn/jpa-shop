@@ -18,15 +18,15 @@ public class Order extends BaseEntity {
 //    @Column(name = "MEMBER_ID")
 //    private Long memberId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "DELIVERY_ID")
     private Delivery delivery;
 
-    @OneToMany(mappedBy = "order") // 양방향 연관관계, 연관관계 주인 설정
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL) // 양방향 연관관계, 연관관계 주인 설정
     private List<OrderItem> orderItems = new ArrayList<>();
 
     // 하이버네이트가 자동으로 데이터 베이스 날짜 타입과 매핑해줌
